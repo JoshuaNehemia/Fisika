@@ -7,7 +7,8 @@
 ## Vektor
 
 ## Kinematika
-
+![kinematika pada 1 dimensi](Materi/03_Kinematika_1D.md)
+![kinematika pada 2/3 dimensi](Materi/04_Kinematika_2D.md)
 ## Hukum Newton
 
 ## Energi dan Usaha
