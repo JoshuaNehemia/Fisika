@@ -1,0 +1,386 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- PREAMBLE ---
+% Pengaturan dasar dokumen
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[indonesian]{babel}
+
+% Paket esensial untuk matematika dan sains
+\usepackage{amsmath}     % Formula matematika tingkat lanjut
+\usepackage{amssymb}     % Simbol-simbol matematika tambahan
+% amsthm dimuat untuk kompatibilitas, namun pengaturannya digantikan oleh tcolorbox
+\usepackage{amsthm}
+
+% --- Pengaturan Warna dan Kotak Teorema ---
+\usepackage[dvipsnames]{xcolor} % Paket untuk warna dengan banyak pilihan nama
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems} % Library tcolorbox untuk lingkungan teorema
+
+% Pengaturan tata letak dan visual
+\usepackage[a4paper, margin=1in]{geometry} % Kontrol margin halaman
+\usepackage{graphicx}      % Untuk menyisipkan gambar
+\usepackage{booktabs}      % Garis tabel yang lebih profesional
+\usepackage{microtype}     % Penyempurnaan tipografi untuk justifikasi yang lebih baik
+\usepackage{hyperref}      % Membuat referensi dan tautan menjadi interaktif
+
+% Definisi warna kustom untuk konsistensi
+\definecolor{defcolor}{RGB}{28, 128, 184}  % Biru yang tenang untuk definisi
+\definecolor{thmcolor}{RGB}{199, 21, 133}  % Merah-ungu untuk teorema
+\definecolor{lemcolor}{RGB}{40, 167, 69}   % Hijau untuk lemma dan sejenisnya
+\definecolor{notecolor}{RGB}{128, 128, 128} % Abu-abu untuk catatan dan contoh
+\definecolor{boxbackcolor}{RGB}{248, 249, 250} % Latar belakang kotak yang sangat terang
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=defcolor, % Menggunakan warna definisi untuk tautan internal
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={Matematika Dasar untuk Fisika},
+    pdfauthor={Joshua Nehemia S},
+}
+
+% --- Definisi Perintah Kustom ---
+% Mendefinisikan perintah \iu untuk unit imajiner agar konsisten dan mudah diubah
+\newcommand{\iu}{\mathrm{i}}
+
+% --- Lingkungan Teorema (Theorem-like Environments) dengan tcolorbox ---
+% Gaya umum untuk semua kotak teorema
+\tcbset{
+    arc=3mm,
+    colback=boxbackcolor,
+    fonttitle=\bfseries,
+    title filled=false,
+    boxrule=0.8pt,
+}
+
+% Mendefinisikan lingkungan Definisi baru
+\newtcbtheorem[number within=section]{definition}{Definisi}{
+    colframe=defcolor,
+    coltitle=defcolor,
+    attach title to upper={ --~}
+}{def}
+
+% Mendefinisikan lingkungan Teorema baru
+\newtcbtheorem[number within=section]{theorem}{Teorema}{
+    colframe=thmcolor,
+    coltitle=thmcolor,
+    attach title to upper={ --~}
+}{thm}
+
+% Mendefinisikan lingkungan lain yang penomorannya mengikuti Teorema
+\newtcbtheorem[use counter from=theorem]{lemma}{Lemma}{
+    colframe=lemcolor,
+    coltitle=lemcolor,
+    attach title to upper={ --~}
+}{lem}
+
+\newtcbtheorem[use counter from=theorem]{corollary}{Korolari}{
+    colframe=lemcolor,
+    coltitle=lemcolor,
+    attach title to upper={ --~}
+}{cor}
+
+\newtcbtheorem[use counter from=theorem]{proposition}{Proposisi}{
+    colframe=lemcolor,
+    coltitle=lemcolor,
+    attach title to upper={ --~}
+}{prop}
+
+% Mendefinisikan lingkungan Contoh dan Catatan baru
+\newtcbtheorem[number within=section]{example}{Contoh}{
+    colframe=notecolor,
+    coltitle=notecolor,
+    attach title to upper={ --~}
+}{ex}
+
+\newtcbtheorem[number within=section]{remark}{Catatan}{
+    colframe=notecolor,
+    coltitle=notecolor,
+    attach title to upper={ --~}
+}{rem}
+
+
+% --- Informasi Judul ---
+\title{\bf Tinjauan Konsep Matematika Fundamental untuk Fisika}
+\author{Joshua Nehemia S}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Struktur Himpunan Bilangan}
+Dalam disiplin matematika, himpunan-himpunan bilangan diklasifikasikan berdasarkan sifat dan karakteristik uniknya. Himpunan-himpunan ini saling terhubung dalam sebuah struktur hierarkis yang menjadi fondasi esensial bagi analisis matematis.
+
+\subsection{Bilangan Kompleks ($\mathbb{C}$)}
+Himpunan bilangan kompleks, dilambangkan dengan $\mathbb{C}$, merupakan ekstensi dari himpunan bilangan real dan menjadi cakupan termuat luas dalam struktur bilangan. Setiap elemennya dapat diekspresikan dalam bentuk kanonis $a + b\iu$, di mana $a$ dan $b$ adalah bilangan real. Simbol $\iu$ merepresentasikan unit imajiner yang didefinisikan oleh relasi $\iu^2 = -1$. Komponen $a$ disebut sebagai bagian real, sedangkan $b$ adalah bagian imajiner.
+
+\subsection{Bilangan Real ($\mathbb{R}$)}
+Bilangan real, yang disimbolkan dengan $\mathbb{R}$, mencakup semua bilangan yang dapat dipetakan ke sebuah titik pada garis bilangan kontinu. Himpunan ini terdiri atas gabungan bilangan rasional dan irasional. Secara definitif, bilangan real adalah semua bilangan yang tidak memiliki komponen imajiner.
+
+\subsection{Bilangan Imajiner Murni}
+Bilangan imajiner murni adalah bilangan yang kuadratnya menghasilkan nilai real negatif. Bilangan ini merupakan hasil perkalian skalar antara sebuah bilangan real dengan unit imajiner $\iu$. Contohnya meliputi $2\iu$, $-5\iu$, dan $\iu\sqrt{3}$.
+
+\subsection{Bilangan Rasional ($\mathbb{Q}$)}
+Bilangan rasional, yang dilambangkan dengan $\mathbb{Q}$, adalah setiap bilangan yang dapat dinyatakan sebagai rasio (perbandingan) dua bilangan bulat, $\frac{p}{q}$, di mana $p$ adalah pembilang dan $q$ adalah penyebut non-nol ($q \neq 0$). Dalam representasi desimalnya, bilangan rasional akan memiliki ekspansi yang terbatas (terminating) atau berulang secara periodik.
+
+\subsection{Bilangan Irasional ($\mathbb{I}$ atau $\mathbb{R} \setminus \mathbb{Q}$)}
+Bilangan irasional merupakan subhimpunan dari bilangan real yang tidak dapat diekspresikan sebagai rasio dua bilangan bulat. Representasi desimal dari bilangan irasional bersifat tak terbatas dan non-periodik. Contoh kanonis dari bilangan irasional adalah $\pi$ dan $\sqrt{2}$.
+
+\subsection{Bilangan Bulat ($\mathbb{Z}$)}
+Himpunan bilangan bulat, dinotasikan dengan $\mathbb{Z}$, terdiri dari bilangan cacah (0, 1, 2, ...) beserta invers aditifnya (-1, -2, -3, ...). Bilangan ini tidak memiliki komponen fraksional atau desimal.
+
+\subsection{Bilangan Cacah ($\mathbb{W}$)}
+Bilangan cacah ($\mathbb{W}$) adalah himpunan bilangan bulat non-negatif, yang dimulai dari 0, 1, 2, 3, dan seterusnya.
+
+\subsection{Bilangan Asli ($\mathbb{N}$)}
+Bilangan asli ($\mathbb{N}$) adalah himpunan bilangan bulat positif yang digunakan untuk proses pencacahan (counting), dimulai dari 1, 2, 3, dan seterusnya.
+
+\subsection{Bilangan Nol (0)}
+Nol (0) adalah elemen unik dalam himpunan bilangan bulat yang tidak bersifat positif maupun negatif. Nol berfungsi sebagai elemen identitas terhadap operasi penjumlahan, di mana untuk setiap bilangan $x$ berlaku $x + 0 = x$.
+
+\section{Aljabar}
+Aljabar adalah cabang fundamental matematika yang menginvestigasi struktur-struktur abstrak dan manipulasi simbol di dalamnya. Aljabar dapat dipandang sebagai generalisasi dari aritmetika, di mana variabel diperkenalkan untuk merepresentasikan kuantitas yang tidak diketahui atau dapat berubah, serta memungkinkan formulasi hukum-hukum umum.
+
+\subsection{Persamaan Linear, Kuadrat, dan Polinomial}
+Persamaan aljabar adalah pernyataan matematis yang menegaskan kesetaraan antara dua ekspresi aljabar. Klasifikasinya didasarkan pada derajat (pangkat tertinggi) dari variabel yang tidak diketahui.
+
+\paragraph{Persamaan Linear}
+Bentuk umum persamaan linear adalah:
+\[
+ax + b = 0, \quad \text{dengan } a \neq 0
+\]
+di mana $a$ dan $b$ adalah konstanta, dan $x$ adalah variabel. Persamaan ini memiliki tepat satu solusi.
+
+\paragraph{Persamaan Kuadrat}
+Bentuk umum persamaan kuadrat adalah:
+\[
+ax^2 + bx + c = 0, \quad \text{dengan } a \neq 0
+\]
+Sifat dari akar-akar (solusi) persamaan ini dideterminasi oleh nilai diskriminan, $\Delta = b^2 - 4ac$:
+\begin{itemize}
+    \item Jika $\Delta > 0$, terdapat dua akar real yang berbeda.
+    \item Jika $\Delta = 0$, terdapat satu akar real ganda (dua akar real identik).
+    \item Jika $\Delta < 0$, terdapat dua akar kompleks konjugat.
+\end{itemize}
+Dalam konteks fisika, keberadaan akar real seringkali menjadi prasyarat untuk solusi yang memiliki makna fisis terukur.
+
+\paragraph{Persamaan Polinomial}
+Secara umum, persamaan polinomial berderajat $n$ memiliki bentuk:
+\[
+P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 = 0
+\]
+di mana $a_n \neq 0$. Teorema Fundamental Aljabar menjamin bahwa persamaan ini memiliki tepat $n$ akar dalam himpunan bilangan kompleks, dengan memperhitungkan multiplisitasnya.
+
+\subsection{Metode Penyelesaian Persamaan}
+
+\paragraph{Rumus Kuadrat (Rumus ABC)}
+Solusi untuk persamaan kuadrat $ax^2 + bx + c = 0$ diberikan secara eksplisit oleh:
+\[
+x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]
+Rumus ini merupakan salah satu instrumen matematis yang paling sering diaplikasikan dalam fisika, seperti dalam analisis gerak parabola atau osilasi harmonik.
+
+\paragraph{Persamaan Polinomial Orde Tinggi}
+Untuk polinomial berderajat tiga atau lebih, tidak ada formula umum yang sederhana. Metode yang lazim digunakan meliputi:
+\begin{itemize}
+    \item \textbf{Teorema Akar Rasional:} Memfasilitasi identifikasi kandidat akar rasional berbentuk $\pm p/q$, di mana $p$ adalah faktor dari koefisien konstan $a_0$ dan $q$ adalah faktor dari koefisien utama $a_n$.
+    \item \textbf{Pembagian Sintetis (Metode Horner):} Prosedur algoritmik untuk menguji kandidat akar dan mereduksi derajat polinomial.
+    \item \textbf{Metode Numerik:} Untuk kasus yang tidak dapat diselesaikan secara analitik, metode iteratif seperti Newton-Raphson digunakan untuk menghampiri akar.
+\end{itemize}
+
+\subsection{Faktorisasi dan Manipulasi Aljabar}
+Kemampuan untuk memanipulasi ekspresi aljabar secara efisien adalah keterampilan krusial. Tujuannya adalah untuk menyederhanakan persamaan atau mengisolasi variabel yang relevan.
+
+\paragraph{Faktorisasi}
+Faktorisasi adalah proses mengubah ekspresi aditif (penjumlahan) menjadi bentuk multiplikatif (perkalian). Beberapa identitas yang sering digunakan adalah:
+\begin{itemize}
+    \item Selisih Kuadrat: $a^2 - b^2 = (a-b)(a+b)$
+    \item Kuadrat Sempurna: $a^2 \pm 2ab + b^2 = (a \pm b)^2$
+    \item Selisih dan Jumlah Kubik: $a^3 \mp b^3 = (a \mp b)(a^2 \pm ab + b^2)$
+\end{itemize}
+
+\paragraph{Ekspansi Binomial}
+Ekspansi dari bentuk $(a+b)^n$ dapat ditentukan melalui Teorema Binomial:
+    \[
+    (a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k
+    \]
+    di mana koefisien binomial $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ bersesuaian dengan entri pada Segitiga Pascal.
+
+\paragraph{Penyusunan Ulang Persamaan}
+Dalam fisika, seringkali diperlukan untuk mengekspresikan suatu variabel fisis dalam terminologi variabel lain. Ini melibatkan operasi aljabar dasar untuk mengisolasi variabel yang diinginkan.
+
+\subsection{Rasionalisasi dan Manipulasi Radikal}
+Ekspresi yang melibatkan akar (radikal) sering muncul dalam berbagai bidang fisika, seperti relativitas dan mekanika kuantum.
+
+\paragraph{Rasionalisasi Penyebut}
+Ini adalah proses untuk mengeliminasi ekspresi radikal dari penyebut suatu pecahan. Untuk penyebut berbentuk $\sqrt{a} \pm \sqrt{b}$, pembilang dan penyebut dikalikan dengan sekawan (konjugat) penyebut, yaitu $\sqrt{a} \mp \sqrt{b}$.
+\[
+\frac{c}{\sqrt{a} + \sqrt{b}} = \frac{c}{\sqrt{a} + \sqrt{b}} \cdot \frac{\sqrt{a} - \sqrt{b}}{\sqrt{a} - \sqrt{b}} = \frac{c(\sqrt{a} - \sqrt{b})}{a - b}
+\]
+
+\paragraph{Sifat-sifat Akar}
+Relasi antara notasi akar dan pangkat fraksional adalah fundamental: $\sqrt[n]{a^m} = a^{m/n}$. Sifat-sifat eksponen juga berlaku, seperti:
+\begin{itemize}
+    \item $\sqrt{ab} = \sqrt{a}\sqrt{b}$
+    \item $\sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}}$
+\end{itemize}
+
+\subsection{Sistem Persamaan Linear (SPL)}
+Berbagai masalah fisika, seperti analisis rangkaian listrik (Hukum Kirchhoff) atau sistem kesetimbangan gaya, dapat dimodelkan sebagai sistem persamaan linear. Sebuah SPL dengan $m$ persamaan dan $n$ variabel dapat direpresentasikan dalam bentuk matriks:
+\[
+A\mathbf{x} = \mathbf{b}
+\]
+di mana $A$ adalah matriks koefisien berdimensi $m \times n$, $\mathbf{x}$ adalah vektor kolom variabel $n \times 1$, dan $\mathbf{b}$ adalah vektor kolom konstanta $m \times 1$.
+
+Metode penyelesaian yang umum meliputi:
+\begin{itemize}
+    \item \textbf{Substitusi dan Eliminasi:} Efektif untuk sistem berdimensi kecil.
+    \item \textbf{Eliminasi Gauss-Jordan:} Prosedur sistematis yang menggunakan operasi baris elementer untuk mengubah matriks augmented $[A|\mathbf{b}]$ menjadi bentuk eselon baris tereduksi.
+    \item \textbf{Aturan Cramer:} Memberikan solusi eksplisit melalui determinan ($x_i = \frac{\det(A_i)}{\det(A)}$), namun tidak efisien secara komputasi untuk sistem berskala besar.
+\end{itemize}
+
+\subsection{Pertidaksamaan}
+Pertidaksamaan digunakan untuk mendefinisikan batasan fisis atau domain validitas dari sebuah solusi.
+
+\paragraph{Sifat Dasar}
+Operasi pada pertidaksamaan serupa dengan persamaan, dengan satu kaidah krusial: saat kedua ruas dikalikan atau dibagi dengan bilangan negatif, arah pertidaksamaan harus dibalik.
+\[
+\text{Jika } a < b \text{ dan } c < 0, \text{ maka } ac > bc.
+\]
+
+\paragraph{Pertidaksamaan Nilai Mutlak}
+Nilai mutlak, $|x|$, merepresentasikan jarak $x$ dari nol pada garis bilangan.
+\begin{itemize}
+    \item $|x| < a \iff -a < x < a$
+    \item $|x| > a \iff x > a \text{ atau } x < -a$
+\end{itemize}
+Pertidaksamaan ini sering muncul dalam analisis galat (error) dan penerapan kondisi batas.
+
+\section{Analisis Konsep Limit}
+Limit merupakan konsep fundamental dalam kalkulus yang secara rigor mendeskripsikan perilaku sebuah fungsi ketika variabel independennya mendekati suatu nilai tertentu.
+
+\subsection{Definisi Formal Limit (Definisi Cauchy $\epsilon-\delta$)}
+\begin{definition}{Limit Fungsi}{def:limit_fungsi}
+Dikatakan bahwa limit dari $f(x)$ saat $x$ mendekati $c$ adalah $L$, ditulis sebagai $\lim_{x \to c} f(x) = L$, jika untuk setiap bilangan $\epsilon > 0$, terdapat bilangan $\delta > 0$ sedemikian rupa sehingga jika $0 < |x-c| < \delta$, maka $|f(x) - L| < \epsilon$.
+\end{definition}
+Secara notasi logika kuantor:
+\[
+(\forall \epsilon > 0)(\exists \delta > 0) \text{ s.t. } (0 < |x-c| < \delta \implies |f(x) - L| < \epsilon)
+\]
+Definisi ini mengimplikasikan bahwa nilai $f(x)$ dapat dibuat sedekat mungkin dengan $L$ dengan cara memilih $x$ yang cukup dekat dengan $c$.
+
+\subsection{Limit Sepihak (One-Sided Limits)}
+\begin{definition}{Limit Kiri dan Kanan}{def:limit_sepihak}
+\begin{enumerate}
+    \item \textbf{Limit Kiri:} $\lim_{x \to c^-} f(x) = L$ jika $(\forall \epsilon > 0)(\exists \delta > 0)$ s.t. $(c - \delta < x < c \implies |f(x) - L| < \epsilon)$.
+    \item \textbf{Limit Kanan:} $\lim_{x \to c^+} f(x) = L$ jika $(\forall \epsilon > 0)(\exists \delta > 0)$ s.t. $(c < x < c + \delta \implies |f(x) - L| < \epsilon)$.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}{}{thm:syarat_limit_ada}
+Limit dua sisi $\lim_{x \to c} f(x)$ ada dan bernilai $L$ jika dan hanya jika limit kiri dan kanannya ada dan keduanya bernilai $L$.
+\[
+\lim_{x \to c} f(x) = L \iff \lim_{x \to c^-} f(x) = L \text{ dan } \lim_{x \to c^+} f(x) = L
+\]
+\end{theorem}
+
+\subsection{Limit di Tak Hingga dan Limit Tak Terhingga}
+Konsep limit diperluas untuk menganalisis perilaku asimtotik fungsi.
+\begin{definition}{Limit di Tak Hingga}{def:limit_di_tak_hingga}
+$\lim_{x \to \infty} f(x) = L$ jika $(\forall \epsilon > 0)(\exists M > 0)$ s.t. $(x > M \implies |f(x) - L| < \epsilon)$. Ini mendeskripsikan keberadaan asimtot horizontal pada $y=L$.
+\end{definition}
+\begin{definition}{Limit Tak Terhingga}{def:limit_tak_terhingga}
+$\lim_{x \to c} f(x) = \infty$ jika $(\forall M > 0)(\exists \delta > 0)$ s.t. $(0 < |x-c| < \delta \implies f(x) > M)$. Ini mendeskripsikan keberadaan asimtot vertikal pada $x=c$.
+\end{definition}
+
+\subsection{Teorema L'Hôpital dan Bentuk Tak Tentu}
+Teorema ini menyediakan metode untuk mengevaluasi limit dari bentuk-bentuk tak tentu seperti $\frac{0}{0}$ atau $\frac{\infty}{\infty}$.
+\begin{theorem}{Aturan L'Hôpital}{thm:lhopital}
+Misalkan $f$ dan $g$ adalah fungsi yang terdiferensialkan pada interval terbuka yang memuat $c$. Jika $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = 0$ atau $\pm\infty$, dan $\lim_{x \to c} \frac{f'(x)}{g'(x)}$ ada, maka:
+\[
+\lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}
+\]
+\end{theorem}
+
+\section{Diferensial (Turunan)}
+Turunan adalah pilar utama kalkulus yang mengkuantifikasi laju perubahan sesaat (instantaneous rate of change). Secara fundamental, turunan merupakan hasil operasi limit pada rasio perubahan nilai fungsi terhadap perubahan variabelnya. Turunan dari $f(x)$ terhadap $x$, dinotasikan $f'(x)$ atau $\frac{dy}{dx}$, didefinisikan sebagai:
+\begin{definition}{Turunan}{def:turunan}
+\[
+f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
+\]
+asalkan limit tersebut ada. Secara geometris, nilai $f'(x)$ merepresentasikan gradien garis singgung pada kurva $y=f(x)$ di titik $x$.
+\end{definition}
+
+\paragraph{Eksistensi Turunan: Diferensiabilitas dan Aproksimasi Linear Lokal}
+Eksistensi turunan bergantung pada sifat kelancaran (smoothness) sebuah fungsi. Turunan ada pada suatu titik jika, ketika diperbesar (zoomed in) secara lokal, grafik fungsi tersebut semakin menyerupai garis lurus. Fenomena ini, yang dikenal sebagai \textbf{diferensiabilitas}, adalah inti dari kalkulus diferensial. Jika suatu fungsi memiliki "sudut tajam" atau diskontinuitas, limit dari kiri dan kanan dalam definisi turunan tidak akan sama, sehingga turunan di titik tersebut tidak terdefinisi.
+
+\paragraph{Mekanisme Kerja Turunan: Linearisasi Masalah}
+Kekuatan turunan terletak pada kemampuannya untuk melakukan \textbf{linearisasi masalah}. Turunan mereduksi perilaku non-linear yang kompleks dari sebuah fungsi di sekitar suatu titik menjadi sebuah aproksimasi linear sederhana (garis singgung). Gradien garis ini, yaitu nilai turunan, mengemas informasi esensial:
+\begin{itemize}
+    \item \textbf{Tanda Turunan ($+/-$):} Menunjukkan apakah fungsi sedang naik (monoton naik) atau turun (monoton turun).
+    \item \textbf{Magnitudo Turunan:} Mengindikasikan tingkat kecuraman perubahan. Nilai nol menandakan titik stasioner.
+\end{itemize}
+
+\subsection{Aplikasi Turunan}
+\begin{itemize}
+    \item \textbf{Analisis Fungsi dan Optimisasi:} Menentukan titik ekstremum (maksimum/minimum), interval kemonotonan, dan kecekungan kurva.
+    \item \textbf{Fisika dan Teknik:} Kecepatan adalah turunan posisi terhadap waktu ($v = ds/dt$), dan percepatan adalah turunan kecepatan terhadap waktu ($a = dv/dt = d^2s/dt^2$).
+    \item \textbf{Aproksimasi Taylor:} Turunan menjadi dasar dari deret Taylor, yang mengaproksimasi fungsi menggunakan polinomial. Aproksimasi orde pertama, $f(x) \approx f(a) + f'(a)(x-a)$, adalah bentuk formal dari linearisasi lokal.
+\end{itemize}
+
+\subsection{Persamaan Diferensial Biasa (Ordinary Differential Equations - ODE)}
+ODE adalah persamaan yang menghubungkan sebuah fungsi dengan satu variabel independen beserta turunan-turunannya. Secara konseptual, ODE merupakan bahasa matematis yang digunakan untuk memodelkan sistem dinamis.
+\begin{itemize}
+    \item \textbf{Contoh (Peluruhan Radioaktif):} $\frac{dN}{dt} = -\lambda N$. Persamaan ini menyatakan bahwa laju peluruhan sebanding dengan jumlah partikel yang tersisa. Solusinya adalah fungsi eksponensial $N(t) = N_0 e^{-\lambda t}$.
+    \item \textbf{Contoh (Osilator Harmonik):} $m\frac{d^2x}{dt^2} + kx = 0$. Persamaan ini merepresentasikan Hukum II Newton yang diaplikasikan pada sistem massa-pegas. Solusinya adalah fungsi sinusoidal yang mendeskripsikan gerak osilasi.
+\end{itemize}
+
+\subsection{Persamaan Diferensial Parsial (Partial Differential Equations - PDE)}
+PDE adalah persamaan yang melibatkan fungsi dengan beberapa variabel independen dan turunan-turunan parsialnya. PDE esensial untuk memodelkan fenomena fisis yang bergantung pada ruang dan waktu secara simultan.
+\begin{itemize}
+    \item \textbf{Persamaan Gelombang:} $\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}$. Mendeskripsikan propagasi berbagai jenis gelombang.
+    \item \textbf{Persamaan Panas:} $\frac{\partial u}{\partial t} = \alpha \nabla^2 u$. Mendeskripsikan difusi panas atau proses difusi lainnya.
+    \item \textbf{Persamaan Laplace:} $\nabla^2 u = 0$. Mendeskripsikan kondisi tunak (steady-state) dari berbagai sistem fisis, seperti potensial elektrostatik.
+\end{itemize}
+
+\section{Integral}
+Integral adalah konsep sentral kedua dalam kalkulus, yang secara konseptual dapat dipandang dari dua perspektif: sebagai operasi invers dari turunan (antiturunan) dan sebagai limit dari proses penjumlahan (integral tentu). Keterkaitan antara dua perspektif ini dijelaskan oleh Teorema Fundamental Kalkulus.
+
+\paragraph{Perspektif 1: Integral sebagai Antiturunan} Integral sering dikenal sebagai 'kebalikan' dari turunan karena Integral memiliki sifat seperti antiturunan.
+\begin{definition}{Integral Tak Tentu}{def:integral_tak_tentu}
+Fungsi $F$ disebut antiturunan dari $f$ jika $F'(x) = f(x)$. Himpunan semua antiturunan dari $f$ dinotasikan sebagai integral tak tentu:
+\[
+\int f(x) \,dx = F(x) + C
+\]
+di mana $C$ adalah konstanta integrasi sembarang.
+\end{definition}
+
+\paragraph{Perspektif 2: Integral sebagai Akumulasi (Penjumlahan Riemann)}
+Perspektif ini mendefinisikan integral sebagai metode untuk menghitung total akumulasi suatu kuantitas, yang secara geometris diinterpretasikan sebagai luas di bawah kurva.
+\begin{definition}{Integral Tentu}{def:integral_tentu}
+Integral tentu dari $f$ dari $a$ ke $b$ didefinisikan sebagai limit dari Penjumlahan Riemann:
+\[
+\int_{a}^{b} f(x) \,dx = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*) \Delta x
+\]
+asalkan limit tersebut ada.
+\end{definition}
+
+\paragraph{Signifikansi Integral: Teorema Fundamental Kalkulus}
+Efisiensi integral sebagai alat komputasi berasal dari hubungan mendalam antara antiturunan dan penjumlahan Riemann, yang dirangkum dalam Teorema Fundamental Kalkulus (TFK).
+\begin{theorem}{Teorema Fundamental Kalkulus}{thm:tfk}
+Misalkan $f$ adalah fungsi yang kontinu pada interval $[a,b]$.
+\begin{enumerate}
+    \item \textbf{Bagian Pertama:} Jika $g(x) = \int_{a}^{x} f(t) \,dt$, maka $g'(x) = f(x)$. Bagian ini menyatakan bahwa diferensiasi adalah operasi invers dari integrasi.
+    \item \textbf{Bagian Kedua:} Jika $F$ adalah sembarang antiturunan dari $f$, maka:
+    \[
+    \int_{a}^{b} f(x) \,dx = F(b) - F(a)
+    \]
+\end{enumerate}
+\end{theorem}
+Bagian kedua dari TFK menyediakan metode praktis untuk menghitung integral tentu tanpa perlu melalui proses limit Penjumlahan Riemann, cukup dengan menemukan antiturunan dan mengevaluasinya pada batas-batas integrasi.
+
+\end{document}
