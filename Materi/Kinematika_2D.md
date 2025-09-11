@@ -1,10 +1,10 @@
 # Kinematika pada 2/3 Dimensi
-Pada materi ini, tujuan pembelajaran sama dengan materi ![kinematika pada 1 dimensi](03_Kinematika_1D.md) namun gerakan benda atau partikel terjadi pada 2 atau 3 dimensi. 
+Pada materi ini, tujuan pembelajaran sama dengan materi ![kinematika pada 1 dimensi](Kinematika_1D.md) namun gerakan benda atau partikel terjadi pada 2 atau 3 dimensi. 
 
 Contoh gerak pada 2 dimensi adalah lemparan bola basket menuju ring yang bergerak maju dan keatas (sumbu horizontal dan vertikal) yang 2 dimensi. Pilot mendaratkan pesawat, mnendaki gunung, mobil yang belok, dan lain lain.
 
 > [!WARNING]
-> Sebelum memelajari materi ini, disarankan untuk menyelesaikan materi vektor terlebih dahulu. Materi dapat diakses melalui ![link disini](02_vector.md)
+> Sebelum memelajari materi ini, disarankan untuk menyelesaikan materi vektor terlebih dahulu. Materi dapat diakses melalui ![link disini](Vektor.md)
 
 ## Posisi dan Perpindahan
 Salah satu cara umum melokasikan partikel dengan **vektor posisi** $\vec{r}$, dimana vektor memanjang dari titik referensi (biasanya *point of origin*) dari suatu partikel. Notasi vektor dapat ditulis sebagai,
@@ -81,9 +81,9 @@ v_{0y} &= gt
 Maka, $t$ adalah ketika partikel mencapai puncak ketinggian dari gerak proyektil. Hal ini dikarenakan ketika partikel berada di puncak ketinggian, partikel tidak lagi memiliki $v$ untuk gerak ke-atas atau $v_y = 0$ sehingga percepatan gravitasi menarik partikel kebawah. Maka bisa dilakukan perhitungan 
 
 $$\begin{align}
-Y_{\max } &= v_0 t - \frac{1}{2} gt^2 \\ 
+Y_{\max } &= v_{0y} t - \frac{1}{2} gt^2 \\ 
 Y_{\max } &= \frac{v_{0y}^2}{g} - \frac{1}{2} \frac{v_{0y}^2}{g} \\
-Y_{\max } &= \frac{v_{0y}}{2g}
+Y_{\max } &= \frac{v_{0y}^2}{2g}
 \end{align}$$
 
 Setelah menemukan $Y_{\max}$, maka hanya memerlukan mengobservasi gerak proyektil pada sumbu vertikal dari puncak hingga sama seperti semula ketitka ditembakan.
@@ -107,8 +107,28 @@ Sehingga, jarak horizontal maksimum adalah
 
 $$\begin{align}
 x-x_0 =v_{0x}  t &= v_0 \cos (\theta) t\\
-\Delta x_{\max}&= v_{0x} \cos (\theta) 2T \\
-&= v_{0x} \cos (\theta) 2\frac{v_{0x}}{g} \\
-&= \frac{2 v_{0x} \cos (\theta)}{g}
+\Delta x_{\max}&= v_{0x}  2T \\
+&= v_{0x} 2\frac{v_{0y}}{g} \\
+&= \frac{2 v_{0x} v_{0y}}{g} \\
+&= \frac{v_0^2\sin(2\theta)}{g}
 \end{align}$$
 
+Untuk menemukan kemungkinan $x_{terjauh}$ dengan merubah sudut proyektil. Maka,
+
+$$\begin{align}
+\frac{dR}{d\theta} &=\frac{2V_0}{g}2(\cos(2\theta)) \\
+0 &= \cos(2\theta)\\
+2\theta &= 90 \deg + K \pi , K \in \mathbb{Z}
+\end{align}$$
+
+Pada gerak proyektil dapat dilakukan pendekatan lain tanpa perlu melakukan pendekatan dengan waktu yaitu bisa melakukan pendekatan dengan $x$
+
+
+$$\begin{align}
+y &= v_{0} \sin(\theta) t - \frac{1}{2} g t^2 \\
+&= \tan(\theta) x - \frac{gx^2}{(v_{0} \cos(\theta))^2}
+\end{align}$$
+
+Maka, bisa disimpulkan bahwa persamaan tersebut adalah persamaan lintasan gerak proyektil.
+
+## Gerak Melingkar
